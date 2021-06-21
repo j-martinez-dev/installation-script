@@ -62,11 +62,7 @@ create_sh_key() {
 }
 
 install_aws(){
-    sudo apt install -y python3-pip
-    pip3 install aws-mfa aws-cli
-    echo '' >> ~/.bashrc
-    echo "PATH=~/.local/bin:$PATH"
-    echo '' >> ~/.bashrc    
+    sudo apt-get install awscli
 }
 
 install_terraform(){
