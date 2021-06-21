@@ -43,3 +43,18 @@ install_git() {
     echo 'unset color_prompt force_color_prompt' >> ~/.bashrc
     echo '' >> ~/.bashrc
 }
+
+
+create_sh_key() {
+    rm  ~/.ssh/id_rsa
+    ssh-keygen -b 4096 -t rsa -P ""  -C $GIT_EMAIL -f ~/.ssh/id_rsa
+    eval $(ssh-agent -s)
+    xclip -sel clip <  ~/.ssh/id_rsa.pub
+    echo "Please add the ssh key to your gitlab account, the ssh key is in your clipboard"
+    read _
+}
+
+install_git
+create_sh_key
+
+install_node
