@@ -17,6 +17,9 @@ install_node() {
     echo '' >> ~/.bashrc
     echo 'PATH=~/.npm-global/bin:$PATH' | tee -a ~/.bashrc
     echo '' >> ~/.bashrc
+    
+    echo "Upgrade NPM"
+    npm install -g npm@latest
 }
 
 install_git() {
