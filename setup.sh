@@ -1,5 +1,11 @@
-## Node.JS LTS
+init() {
+    sudo apt update
+    sudo apt upgrade -y
+}
 
+install_common_utils() {
+    sudo apt-get install -y curl xclip jq
+}
 
 install_node() {
     echo "Installing Node 14 JS LTS"
@@ -50,11 +56,11 @@ create_sh_key() {
     ssh-keygen -b 4096 -t rsa -P ""  -C $GIT_EMAIL -f ~/.ssh/id_rsa
     eval $(ssh-agent -s)
     xclip -sel clip <  ~/.ssh/id_rsa.pub
-    echo "Please add the ssh key to your gitlab account, the ssh key is in your clipboard"
-    read _
 }
 
+
+init
+install_common_utils
 install_git
 create_sh_key
-
 install_node
