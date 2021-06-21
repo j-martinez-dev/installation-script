@@ -96,6 +96,15 @@ install_java() {
     echo '</settings>' >> ~/.m2/settings.xml
 }
 
+add_alias() {
+    echo '' >> ~/.bashrc
+    echo "alias mongo-start='docker run --name mongo-database-4 -d -p 27017:27017 -v ~/mongo-database:/mongo-database mongo:4.4'" | tee -a ~/.bashrc
+    echo "alias mongo-shell='docker exec -it mongo-database-4 bash'" | tee -a ~/.bashrc
+    echo "alias purge-git='git remote prune origin'" | tee -a ~/.bashrc
+    echo "alias refresh-dependencies='rm -rf node_modules && rm package-lock.json && npm i --legacy-peer-deps'" | tee -a ~/.bashrc
+    echo '' >> ~/.bashrc  
+}
+
 init
 install_common_utils
 install_git
@@ -103,3 +112,5 @@ create_sh_key
 install_node
 install_aws
 install_terraform
+install_java
+add_alias
