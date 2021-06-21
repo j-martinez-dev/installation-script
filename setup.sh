@@ -65,6 +65,9 @@ install_aws(){
     sudo apt-get install python3-pip
     pip3 install awscli --upgrade --user
     pip3 install aws-mfa
+    echo '' >> ~/.bashrc
+    echo "PATH=~/.local/bin:$PATH"
+    echo '' >> ~/.bashrc    
 }
 
 install_terraform(){
