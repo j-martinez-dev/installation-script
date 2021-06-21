@@ -6,6 +6,7 @@ wget https://raw.githubusercontent.com/panchitoboy/installation-script/main/setu
 
 # Mode windows + wsl
 
+- Install VcXsrv [link](https://sourceforge.net/projects/vcxsrv/files/vcxsrv/)
 - Install notepad++ [link](https://notepad-plus-plus.org/downloads/)
 - Install vscode [link](https://code.visualstudio.com/download)
 - Install docker desktop [link](https://www.docker.com/products/docker-desktop)
