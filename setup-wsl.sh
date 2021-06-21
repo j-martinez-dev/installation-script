@@ -1,3 +1,10 @@
+init() {
+    echo '' >> ~/.bashrc
+    echo "export DISPLAY=\$(cat /etc/resolv.conf | grep nameserver | awk '{print \$2}'):0" >> ~/.bashrc
+    echo 'export LIBGL_ALWAYS_INDIRECT=1' >> ~/.bashrc
+    echo '' >> ~/.bashrc
+    source ~/.bashrc
+}
 
 install_intellij() {
     sudo rm -rf /opt/intellij
@@ -12,3 +19,6 @@ install_intellij() {
     # eclipse formatter 
     # maven settings
 }
+
+init
+install_intellij
