@@ -61,9 +61,25 @@ create_sh_key() {
     xclip -sel clip <  ~/.ssh/id_rsa.pub
 }
 
+install_aws(){
+    sudo apt install -y python3-pip
+    pip3 install aws-mfa aws-cli
+    echo '' >> ~/.bashrc
+    echo "PATH=~/.local/bin:$PATH"
+    echo '' >> ~/.bashrc    
+}
+
+install_terraform(){
+  sudo apt get terraformcurl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+  curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+  sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+  sudo apt-get update && sudo apt-get install terraform
+}
 
 init
 install_common_utils
 install_git
 create_sh_key
 install_node
+install_aws
+install_terraform
