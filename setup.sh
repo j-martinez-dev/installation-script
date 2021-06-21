@@ -39,19 +39,18 @@ install_git() {
     git config --global merge.ff only
 
     echo '' >> ~/.bashrc
-    echo 'force_color_prompt=yes' >> ~/.bashrc
-    echo 'color_prompt=yes' >> ~/.bashrc
-    echo 'parse_git_branch() {' >> ~/.bashrc
+    echo 'git_branch() {' >> ~/.bashrc
     echo ' git branch 2> /dev/null | sed -e '\''/^[^*]/d'\'' -e '\''s/* \(.*\)/(\\1)/'\'' ' >> ~/.bashrc
     echo '}' >> ~/.bashrc
-    echo 'if [ "$color_prompt" = yes ]; then' >> ~/.bashrc
+#export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[00;31m\]\$(git_branch)\[\033[00m\]\$ "
     echo ' PS1='\''${debian_chroot:+($debian_chroot)}\[\\033[01;32m\]\u@\h\[\\033[00m\]:\[\\033[01;34m\]\w\[\\033[01;31m\]$(parse_git_branch)\[\\033[00m\]\$ '\'' ' >> ~/.bashrc
-    echo 'else' >> ~/.bashrc
-    echo ' PS1='\''${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '\'' ' >> ~/.bashrc
-    echo 'fi' >> ~/.bashrc
-    echo 'unset color_prompt force_color_prompt' >> ~/.bashrc
     echo '' >> ~/.bashrc
 }
+
+git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 
 
 create_sh_key() {
