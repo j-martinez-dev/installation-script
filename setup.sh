@@ -72,6 +72,30 @@ install_terraform(){
   sudo apt-get update && sudo apt-get install terraform
 }
 
+install_java() {
+    rm -rf ~/.m2
+
+    sudo apt-get install -y openjdk-11-jdk maven
+    mkdir ~/.m2
+    mkdir ~/.m2/repository
+
+    echo '<?xml version="1.0" encoding="UTF-8"?>' >> ~/.m2/settings.xml
+    echo '<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" ' >> ~/.m2/settings.xml
+    echo '  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">' >> ~/.m2/settings.xml
+    echo "  <localRepository>/home/$USER/.m2/repository</localRepository>" >> ~/.m2/settings.xml
+    echo '  <pluginGroups>' >> ~/.m2/settings.xml
+    echo '  </pluginGroups>' >> ~/.m2/settings.xml
+    echo '  <proxies>' >> ~/.m2/settings.xml
+    echo '  </proxies>' >> ~/.m2/settings.xml
+    echo '  <servers>' >> ~/.m2/settings.xml
+    echo '  </servers>' >> ~/.m2/settings.xml
+    echo '  <mirrors>' >> ~/.m2/settings.xml
+    echo '  </mirrors>' >> ~/.m2/settings.xml
+    echo '  <profiles>' >> ~/.m2/settings.xml
+    echo '  </profiles>' >> ~/.m2/settings.xml
+    echo '</settings>' >> ~/.m2/settings.xml
+}
+
 init
 install_common_utils
 install_git
