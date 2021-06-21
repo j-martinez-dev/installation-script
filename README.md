@@ -14,4 +14,4 @@ wget https://raw.githubusercontent.com/panchitoboy/installation-script/master/se
   - dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
   - Download the Linux kernel update package [link](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
   - wsl --set-default-version 2
-
+- wget https://raw.githubusercontent.com/panchitoboy/installation-script/master/setup-wsl.sh && sudo chmod +x setup-wsl.sh && ./setup-wsl.sh
